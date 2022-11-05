@@ -10,6 +10,7 @@ import { AppBackgroundComponent } from './app-background/app-background.componen
 import { ImportTrainingDataPageComponent } from './import-training-data/import-training-data-page/import-training-data-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ImportFromDatabaseModalComponent } from './import-training-data/import-from-database-modal/import-from-database-modal.component';
+import { ClassPickerComponent } from './class-picker/class-picker.component';
 import { UseWebcamPageComponent } from './import-training-data/use-webcam-page/use-webcam-page.component';
 
 @NgModule({
@@ -19,6 +20,9 @@ import { UseWebcamPageComponent } from './import-training-data/use-webcam-page/u
     ImportTrainingDataPageComponent,
     ImportFromDatabaseModalComponent,
     UseWebcamPageComponent
+    ImportFromDatabaseModalComponent,
+    ImportTrainingDataPageComponent,
+    ClassPickerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -64,6 +64,23 @@
     border-radius: 3px;
 }
 
+.prev-button {
+  background-color: #ffd74a;
+  border-radius: 50%;
+  position: relative;
+  bottom: -28vh;
+  left: 7vw;
+  width: 110px;
+  transform: rotate(180deg);
+}
+
+.prev-button > span {
+  font-weight: bold;
+  font-size: 70px;
+  position: relative;
+  top: -8.5px;
+}
+
 .webcam-live {
     margin-left: calc(100% - 640px);
 }

@@ -1,0 +1,45 @@
+.wrapper {
+  margin-top: 10vh;
+  position: absolute;
+  width: 90vw;
+  height: 90vh;
+  margin-left:10vw;
+}
+
+.title{
+    margin-top: 5vh;
+}
+
+input {
+  background: none;
+  width: 60vw;
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 15vh 15vh 15vh 0vh;
+  font-size: 20px;
+  padding: 12px;
+}
+input:focus-visible {
+    border: none;
+    border-bottom: 1px solid #1570a8;
+}
+
+.separator{
+    display: inline;
+}
+
+.next-button{
+    background-color: #ffd74a;
+    border-radius: 50%;
+    position: relative;
+    bottom: -21vh;
+    right: -7vw;
+    width: 110px;
+}
+
+span {
+  font-weight: bold;
+  font-size: 70px;
+  position:relative;
+  top: -8.5px;
+}
