@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { AppBackgroundComponent } from './app-background/app-background.component';
 import { ImportTrainingDataPageComponent } from './import-training-data/import-training-data-page/import-training-data-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ClassPickerComponent } from './class-picker/class-picker.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppBackgroundComponent,
-    ImportTrainingDataPageComponent
+    ImportTrainingDataPageComponent,
+    ClassPickerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

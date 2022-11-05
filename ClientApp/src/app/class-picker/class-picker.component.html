@@ -1,0 +1,7 @@
+<div class="wrapper">
+  <h1 class="title">What do you want to classify?</h1>
+  <input type="text" [(ngModel)]="class1" required/>
+  <h2 class="separator">from</h2>
+  <input type="text" [(ngModel)]="class2" required/>
+  <button class="next-button" (click)="next()" routerLink="import-training-data"><span>&#8594;</span></button>
+</div>
