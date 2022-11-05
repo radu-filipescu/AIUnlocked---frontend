@@ -4,12 +4,30 @@
   </div>
 
   <div class="search-results">
-    We have <b>{{databaseClass1Results}}</b> images of <b>{{userClass1}}</b> and <b>{{databaseClass2Results}}</b> images of <b>{{userClass2}}</b>.
+    We have <b>{{userClass1Images.length}}</b> images of <b>{{userClass1}}</b> and <b>{{userClass2Images.length}}</b> images of <b>{{userClass2}}</b>.
+  </div>
+
+  <div class="preview1">
+    <div class="helper-mzg">
+      <div class="label1">{{userClass1}}</div>
+      <div style="display: inline; margin-right: 10px" *ngFor="let image of userClass1Images">
+        <img style="height: 160px; margin-top: 5px" [src]="image" />
+      </div>
+    </div>
+  </div>
+
+  <div class="preview2">
+    <div class="helper-mzg">
+      <div class="label2">{{userClass2}}</div>
+      <div style="display: inline; margin-right: 10px" *ngFor="let image of userClass2Images">
+        <img style="height: 160px; margin-top: 5px" [src]="image" />
+      </div>
+    </div>
   </div>
 
   <!-- TODO: display (some) images-->
 
   <div class="modal-button cancel-button" (click)="close()">Cancel</div>
 
-  <div class="modal-button accept-button">use our image database</div>
+  <div class="modal-button accept-button" (click)="useDatabase()">use our image database</div>
 </div>
