@@ -28,7 +28,6 @@
     "core-js": "^3.8.3",
     "jquery": "^3.5.1",
     "lodash-es": "^4.17.21",
-    "ngx-highlightjs": "^4.0.2",
     "node-sass": "^5.0.0",
     "ngx-webcam": "^0.2.6",
     "oidc-client": "^1.11.3",

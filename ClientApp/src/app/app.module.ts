@@ -32,7 +32,8 @@ import { PrismModule } from '@ngx-prism/core';
     RouterModule.forRoot([
     ]),
     AppRoutingModule,
-    PrismModule
+    PrismModule,
+    WebcamModule
   ],
   providers: [],
   bootstrap: [AppComponent]
