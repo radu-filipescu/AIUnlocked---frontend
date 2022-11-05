@@ -1,0 +1,15 @@
+.wrapper {
+    margin-top: 10vh;
+    position: absolute;
+    width: 90vw;
+    height: 90vh;
+}
+
+.page-header {
+    position: relative;
+    top: 5vh;
+    font-size: 40px;
+    width: 100vw;
+    font-weight: bold;
+    text-align: center;
+}
