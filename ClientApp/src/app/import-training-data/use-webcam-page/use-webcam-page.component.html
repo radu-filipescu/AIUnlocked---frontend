@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <div class="modal-header">
+    Use your web camera
+  </div>
+
+  <div *ngIf="!previewMode">
+    <div class="webcam-live">
+      <webcam style="margin-left: 300px"
+              [trigger]="triggerCapture"
+              (imageCapture)="handleImageCapture($event)"></webcam>
+    </div>
+
+    <div class="capture-button"
+         (click)="startCapturing()"
+         *ngIf="!capturingNow">
+      start capturing
+    </div>
+    <div class="capture-counter" *ngIf="imageCaptures.length > 0">{{imageCaptures.length}}</div>
+
+    <div class="stop-capture-button"
+         (click)="stopCapturing()"
+         *ngIf="capturingNow">
+      stop capturing
+    </div>
+
+    <div *ngIf="imageCaptures.length > 0 && !capturingNow" (click)="openPreviewCaptures()" class="preview-captures">preview</div>
+  </div>
+
+  <div *ngIf="previewMode" class="preview-area">
+    <div *ngFor="let image of imageCaptures">
+      <img style="display:inline; float: left; height: 80px; margin-left: 5px; margin-top: 2px" [src]="image" />
+    </div>
+  </div>
+
+  <div *ngIf="previewMode" class="back-from-preview" (click)="closePreview()">
+    back
+  </div>
+
+  <div class="modal-button cancel-button" (click)="close()">Cancel</div>
+
+  <div class="modal-button accept-button" (click)="useWebcamCapture()">use webcam capture</div>
+</div>

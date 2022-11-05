@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { WebcamModule } from 'ngx-webcam';
 
 import { AppComponent } from './app.component';
 import { AppBackgroundComponent } from './app-background/app-background.component';
@@ -10,6 +11,7 @@ import { ImportTrainingDataPageComponent } from './import-training-data/import-t
 import { AppRoutingModule } from './app-routing.module';
 import { ImportFromDatabaseModalComponent } from './import-training-data/import-from-database-modal/import-from-database-modal.component';
 import { ClassPickerComponent } from './class-picker/class-picker.component';
+import { UseWebcamPageComponent } from './import-training-data/use-webcam-page/use-webcam-page.component';
 
 import { PrismModule } from '@ngx-prism/core';
 
@@ -20,7 +22,7 @@ import { PrismModule } from '@ngx-prism/core';
     AppBackgroundComponent,
     ImportTrainingDataPageComponent,
     ImportFromDatabaseModalComponent,
-    ImportTrainingDataPageComponent,
+    UseWebcamPageComponent,
     ClassPickerComponent
   ],
   imports: [

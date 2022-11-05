@@ -13,7 +13,7 @@
     <div class="option-name">Use our Image Database</div>
   </div>
 
-  <div class="import-option" (click)="openOurDatabaseModal()">
+  <div class="import-option" (click)="openWebcamModal()">
     <img style="padding-left: 5vw" src="../../../assets/images/webcam-icon.png" />
     <div class="option-name">Use your web camera</div>
   </div>
@@ -26,4 +26,5 @@
   <button class="prev-button" routerLink="/class-picker"><span>&#8594;</span></button>
 
   <app-import-from-database-modal *ngIf="showDatabaseModal" (cancelEvent)="closeDatabaseModal()"></app-import-from-database-modal>
+  <app-use-webcam-page *ngIf="showWebcamModal" (cancelEvent)="closeWebcamModal()"></app-use-webcam-page>
 </div>

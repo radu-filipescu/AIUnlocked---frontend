@@ -11,7 +11,7 @@ export class ImportTrainingDataPageComponent implements OnInit {
   userClass1: string = "";
   userClass2: string = "";
 
-  showDatabaseModal: boolean = true;
+  showDatabaseModal: boolean = false;
   showWebcamModal: boolean = false;
   showUploadModal: boolean = false;
 
@@ -32,11 +32,17 @@ export class ImportTrainingDataPageComponent implements OnInit {
   }
 
   openUploadModal() {
+    // TODO: implement user upload
+
     this.showUploadModal = true;
   }
 
   closeDatabaseModal() {
     this.showDatabaseModal = false;
+  }
+
+  closeWebcamModal() {
+    this.showWebcamModal = false;
   }
 
 }
