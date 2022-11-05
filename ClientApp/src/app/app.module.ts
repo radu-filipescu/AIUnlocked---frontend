@@ -13,6 +13,9 @@ import { ImportFromDatabaseModalComponent } from './import-training-data/import-
 import { ClassPickerComponent } from './class-picker/class-picker.component';
 import { UseWebcamPageComponent } from './import-training-data/use-webcam-page/use-webcam-page.component';
 
+import { PrismModule } from '@ngx-prism/core';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,8 @@ import { UseWebcamPageComponent } from './import-training-data/use-webcam-page/u
     RouterModule.forRoot([
     ]),
     AppRoutingModule,
-    WebcamModule,
+    PrismModule,
+    WebcamModule
   ],
   providers: [],
   bootstrap: [AppComponent]
