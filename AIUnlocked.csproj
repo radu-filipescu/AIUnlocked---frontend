@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\import-training-data\" />
+    <Folder Include="ClientApp\src\app\global-services\" />
     <Folder Include="ClientApp\src\assets\images\" />
   </ItemGroup>
 
