@@ -16,7 +16,7 @@ import { ClassPickerComponent } from './class-picker/class-picker.component';
     AppComponent,
     AppBackgroundComponent,
     ImportTrainingDataPageComponent,
-    ImportFromDatabaseModalComponent
+    ImportFromDatabaseModalComponent,
     ImportTrainingDataPageComponent,
     ClassPickerComponent
   ],

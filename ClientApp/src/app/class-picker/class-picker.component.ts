@@ -14,11 +14,13 @@ export class ClassPickerComponent implements OnInit {
   constructor(private _globalService: GlobalServiceService) { }
 
   ngOnInit() {
+    this.class1 = GlobalServiceService.userClass1;
+    this.class2 = GlobalServiceService.userClass2;
   }
 
   next(): void {
-    GlobalServiceService.userClass1 = this.class1;
-    GlobalServiceService.userClass2 = this.class2;
+    GlobalServiceService.userClass1 = this.class1.toLowerCase();
+    GlobalServiceService.userClass2 = this.class2.toLowerCase();
   }
 
 }

@@ -32,7 +32,7 @@ input:focus-visible {
     background-color: #ffd74a;
     border-radius: 50%;
     position: relative;
-    bottom: -15vh;
+    bottom: -21vh;
     right: -7vw;
     width: 110px;
 }
