@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
+import { GlobalServiceService } from '../../global-services/global-service.service';
 
 @Component({
   selector: 'app-use-webcam-page',
@@ -19,7 +20,7 @@ export class UseWebcamPageComponent implements OnInit {
 
   previewMode: boolean = false;
 
-  constructor() { }
+  constructor(public globalService: GlobalServiceService) { }
 
   ngOnInit() {
   }
@@ -54,5 +55,13 @@ export class UseWebcamPageComponent implements OnInit {
 
   closePreview() {
     this.previewMode = false;
+  }
+
+  useWebcamCapture() {
+    this.globalService.saveWebcamImages(this.imageCaptures)
+      .subscribe(() => {
+        console.log('images saved!');
+
+      });
   }
 }

@@ -19,9 +19,7 @@ import { UseWebcamPageComponent } from './import-training-data/use-webcam-page/u
     AppBackgroundComponent,
     ImportTrainingDataPageComponent,
     ImportFromDatabaseModalComponent,
-    UseWebcamPageComponent
-    ImportFromDatabaseModalComponent,
-    ImportTrainingDataPageComponent,
+    UseWebcamPageComponent,
     ClassPickerComponent
   ],
   imports: [

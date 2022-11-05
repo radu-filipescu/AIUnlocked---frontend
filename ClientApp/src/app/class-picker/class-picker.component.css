@@ -16,9 +16,15 @@ input {
   border: none;
   border-bottom: 1px solid black;
   margin: 15vh 15vh 15vh 0vh;
-  font-size: 20px;
+  font-size: 40px;
+  font-weight: bold;
   padding: 12px;
 }
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
 input:focus-visible {
     border: none;
     border-bottom: 1px solid #1570a8;
@@ -31,9 +37,9 @@ input:focus-visible {
 .next-button{
     background-color: #ffd74a;
     border-radius: 50%;
-    position: relative;
-    bottom: -21vh;
-    right: -7vw;
+    position: absolute;
+    bottom: 3vh;
+    right: 3vh;
     width: 110px;
 }
 

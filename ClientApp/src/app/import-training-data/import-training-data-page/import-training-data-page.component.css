@@ -67,9 +67,9 @@
 .prev-button {
   background-color: #ffd74a;
   border-radius: 50%;
-  position: relative;
-  bottom: -28vh;
-  left: 7vw;
+  position: absolute;
+  bottom: 3vh;
+  left: 3vh;
   width: 110px;
   transform: rotate(180deg);
 }
