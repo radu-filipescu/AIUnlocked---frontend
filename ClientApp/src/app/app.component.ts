@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  code = `for x in "banana":
+            print(x)`
 }

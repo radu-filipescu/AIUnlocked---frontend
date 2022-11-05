@@ -11,6 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ImportFromDatabaseModalComponent } from './import-training-data/import-from-database-modal/import-from-database-modal.component';
 import { ClassPickerComponent } from './class-picker/class-picker.component';
 
+import { PrismModule } from '@ngx-prism/core';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,8 @@ import { ClassPickerComponent } from './class-picker/class-picker.component';
     FormsModule,
     RouterModule.forRoot([
     ]),
-    AppRoutingModule
+    AppRoutingModule,
+    PrismModule
   ],
   providers: [],
   bootstrap: [AppComponent]
