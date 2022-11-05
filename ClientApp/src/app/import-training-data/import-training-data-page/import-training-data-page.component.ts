@@ -11,12 +11,32 @@ export class ImportTrainingDataPageComponent implements OnInit {
   userClass1: string = "";
   userClass2: string = "";
 
+  showDatabaseModal: boolean = true;
+  showWebcamModal: boolean = false;
+  showUploadModal: boolean = false;
+
   constructor(public globalService: GlobalServiceService) { }
 
   ngOnInit() {
     console.log(GlobalServiceService.userClass1);
     this.userClass1 = GlobalServiceService.userClass1;
     this.userClass2 = GlobalServiceService.userClass2;
+  }
+
+  openOurDatabaseModal() {
+    this.showDatabaseModal = true;
+  }
+
+  openWebcamModal() {
+    this.showWebcamModal = true;
+  }
+
+  openUploadModal() {
+    this.showUploadModal = true;
+  }
+
+  closeDatabaseModal() {
+    this.showDatabaseModal = false;
   }
 
 }
