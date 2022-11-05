@@ -11,8 +11,8 @@ export class ImportTrainingDataPageComponent implements OnInit {
   userClass1: string = "";
   userClass2: string = "";
 
-  showDatabaseModal: boolean = true;
-  showWebcamModal: boolean = false;
+  showDatabaseModal: boolean = false;
+  showWebcamModal: boolean = true;
   showUploadModal: boolean = false;
 
   constructor(public globalService: GlobalServiceService) { }
@@ -37,6 +37,10 @@ export class ImportTrainingDataPageComponent implements OnInit {
 
   closeDatabaseModal() {
     this.showDatabaseModal = false;
+  }
+
+  closeWebcamModal() {
+    this.showWebcamModal = false;
   }
 
 }

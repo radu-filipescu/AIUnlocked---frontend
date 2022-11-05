@@ -63,3 +63,7 @@
     background-color: whitesmoke;
     border-radius: 3px;
 }
+
+.webcam-live {
+    margin-left: calc(100% - 640px);
+}
