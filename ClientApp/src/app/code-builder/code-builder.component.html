@@ -72,6 +72,30 @@ Here you can customize the Laplacian filter (processing the image to obtain the 
         </div>
       </div>
 
+      <div *ngIf="machineLearningModel == 'kNN'" class="image-preprocessing">
+        <br />
+        <div style="width: 200px">
+          <label>k = {{knnDto.neighbors}}</label>
+          <p-slider (onChange)="reevaluateExpression()" [min]="3" [max]="15" [(ngModel)]="knnDto.neighbors"></p-slider>
+        </div>
+
+        <br />
+        <label>Choose weights:</label>
+        <p-radioButton (onClick)="reevaluateExpression()" label="uniform" name="knnWeights" value="uniform" [(ngModel)]="knnDto.weights"></p-radioButton>
+        <br />
+        <p-radioButton (onClick)="reevaluateExpression()" label="distance" name="knnWeights" value="distance" [(ngModel)]="knnDto.weights"></p-radioButton>
+        <br />
+        <br />
+      </div>
+
+      <div *ngIf="machineLearningModel == 'Naive Bayes'" class="image-preprocessing">
+        <br />
+        <div style="width: 200px">
+          <label>alpha = {{naiveBayesDto.alpha}}</label>
+          <p-slider (onChange)="reevaluateExpression()" [min]="0" [max]="1" [step]="0.1" [(ngModel)]="naiveBayesDto.alpha"></p-slider>
+        </div>
+      </div>
+
     </div>
   </div>
 
