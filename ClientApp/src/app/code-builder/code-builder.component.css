@@ -1,0 +1,28 @@
+.wrapper {
+  margin-top: 15vh;
+  position: absolute;
+  width: 90vw;
+  height: 90vh;
+  margin-left: 5vw;
+}
+
+.parameters {
+  float: left;
+}
+
+.code {
+  height: 95%;
+  float: left;
+}
+
+  .code > ngx-prism {
+    height: 100%;
+  }
+
+.adjust {
+    z-index: 10;
+    position: absolute;
+    cursor: col-resize;
+    top: 40vh;
+}
+
