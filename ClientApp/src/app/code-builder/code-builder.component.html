@@ -63,13 +63,13 @@ Here you can customize the Laplacian filter (processing the image to obtain the 
         <br />
         <br />
 
-        <div *ngIf="svcDto.kernel == 'rbf'">
+        <ng-container *ngIf="svcDto.kernel == 'rbf'">
           <label>gamma = {{svcDto.gamma}} </label>
           <p-radioButton (onClick)="reevaluateExpression()" label="scale" name="rbfGamma" value="scale" [(ngModel)]="svcDto.gamma"></p-radioButton>
           <br />
           <p-radioButton (onClick)="reevaluateExpression()" label="auto" name="rbfGamma" value="auto" [(ngModel)]="svcDto.gamma"></p-radioButton>
           <br />
-        </div>
+        </ng-container>
       </div>
 
     </div>
@@ -81,8 +81,8 @@ Here you can customize the Laplacian filter (processing the image to obtain the 
           (dragend)="onDragEnd($event)"
           [style.left.%]="adjust_button_x"></button>
   <div class="code" [style.width.%]="code_width">
-    <h2>Generated code</h2>
-    <div style="overflow: scroll; max-height: 80vh">
+    <h2 style="position: fixed; z-index: 2; top: 15vh;">Generated code</h2>
+    <div>
       <ngx-prism
            [language]="language"
            [cd]="{'code':true}"

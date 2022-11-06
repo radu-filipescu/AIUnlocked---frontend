@@ -70,16 +70,18 @@
   position: absolute;
   bottom: 3vh;
   left: 3vh;
-  width: 110px;
+  width: 70px;
+  height: 70px;
   transform: rotate(180deg);
 }
 
-.prev-button > span {
-  font-weight: bold;
-  font-size: 70px;
-  position: relative;
-  top: -8.5px;
-}
+  .prev-button > span {
+    font-weight: bold;
+    font-size: 70px;
+    position: relative;
+    top: -28.5px;
+    left: -4px;
+  }
 
 .webcam-live {
     margin-left: calc(100% - 640px);
