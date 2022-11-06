@@ -18,7 +18,6 @@ export class ImportTrainingDataPageComponent implements OnInit {
   constructor(public globalService: GlobalServiceService) { }
 
   ngOnInit() {
-    console.log(GlobalServiceService.userClass1);
     this.userClass1 = GlobalServiceService.userClass1;
     this.userClass2 = GlobalServiceService.userClass2;
   }

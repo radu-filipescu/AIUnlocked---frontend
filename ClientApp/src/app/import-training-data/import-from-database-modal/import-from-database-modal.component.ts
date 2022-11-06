@@ -13,6 +13,9 @@ export class ImportFromDatabaseModalComponent implements OnInit {
 
   @Output() cancelEvent = new EventEmitter<void>();
 
+  userClass1Length: number = 0;
+  userClass2Length: number = 0;
+
   userClass1Images: string[] = [];
   userClass2Images: string[] = [];
 
@@ -22,6 +25,16 @@ export class ImportFromDatabaseModalComponent implements OnInit {
   ngOnInit() {
     this.userClass1 = GlobalServiceService.userClass1;
     this.userClass2 = GlobalServiceService.userClass2;
+
+    this.globalService.getImagesOfClassCount(this.userClass1)
+      .subscribe((count) => {
+        this.userClass1Length = count as number;
+      });
+
+    this.globalService.getImagesOfClassCount(this.userClass2)
+      .subscribe((count) => {
+        this.userClass2Length = count as number;
+      });
 
     this.globalService.getImagesOfClass(this.userClass1)
       .subscribe((images) => {

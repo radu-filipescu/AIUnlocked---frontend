@@ -23,11 +23,13 @@ export class GlobalServiceService {
     params = params.append("objectClass", objectClass);
 
     return this.httpClient.get(this.backendUrl + 'Image/getImagesOfClass', { headers: headers, params: params });
-
-    //return this.httpClient.get()
   }
 
-  databaseResultCount(label: string) {
-    //return this.httpClient.get(this.backendUrl, )
+  getImagesOfClassCount(objectClass: string) {
+    let headers = new HttpHeaders();
+    let params = new HttpParams();
+    params = params.append("objectClass", objectClass);
+
+    return this.httpClient.get(this.backendUrl + 'Image/getNumberOfImagesOfClass', { headers: headers, params: params });
   }
 }
