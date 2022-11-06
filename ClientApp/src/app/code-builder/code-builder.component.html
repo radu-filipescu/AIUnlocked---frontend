@@ -1,9 +1,77 @@
 <div class="wrapper">
   <div class="parameters" [style.width.%]="parameters_width">
-    <h2>Parameters</h2>
+    <h2>Parameters (play with the data)</h2>
 
     <div class="params-zone">
-      <div>Mzg</div>
+
+      <div class="image-preprocessing">
+        <div class="preprocess-header" pTooltip="Data set preparation is an important step in training your machine learning model.
+             Data augmentation in particular is a very useful technique to increase your data set variety and in turn prevent your
+             model from overfitting to the training examples. We recommend adding at least one data
+             augmentation step to your training set. Feel free to play around with these techniques
+             and see what works best with your model." tooltipPosition="right">Image Preprocessing</div>
+        <br />
+
+        <label>Flip images:</label>
+        <p-inputSwitch (onChange)="reevaluateExpression()" [(ngModel)]="preprocessingDto.flipValue"></p-inputSwitch>
+
+        <label>Brightness value:</label>
+        <p-inputSwitch (onChange)="reevaluateExpression()" [(ngModel)]="preprocessingDto.brightnessValue"></p-inputSwitch>
+
+        <label>Contrast value:</label>
+        <p-inputSwitch (onChange)="reevaluateExpression()" [(ngModel)]="preprocessingDto.contrastValue"></p-inputSwitch>
+
+        <label>Saturation value:</label>
+        <p-inputSwitch (onChange)="reevaluateExpression()" [(ngModel)]="preprocessingDto.saturationValue"></p-inputSwitch>
+
+        <label>Grayscale value:</label>
+        <p-inputSwitch (onChange)="reevaluateExpression()" [(ngModel)]="preprocessingDto.grayscaleValue"></p-inputSwitch>
+
+        <br />
+        <br />
+      </div>
+
+      <div class="image-preprocessing">
+        <div class="preprocess-header">Machine Learning Model</div>
+
+        <label>Choose a Machine Learning model:</label>
+        <p-radioButton (onClick)="reevaluateExpression()" label="Support Vector Classificator" name="mlModel" value="SVC" [(ngModel)]="machineLearningModel" pTooltip="SVC is based on the support vector machine model, where you draw a function in your data space to separate the classes. When you can’t draw a line to separate your data, there’s a neat thing you can use called the kernel trick: taking your data to a higher dimension (e.g. 2D space to a 3D space). You can modify C (parameter which tells you how hard your data will get separated), the kernel function (provide shortcuts to avoid complex calculations. The amazing thing about kernel is that we can go to higher dimensions and perform smooth calculations with the help of it) and gamma (the gamma parameter defines how far the influence of a single training example reaches).
+"></p-radioButton>
+        <br />
+        <p-radioButton (onClick)="reevaluateExpression()" label="k-Nearest Neighbours" name="mlModel" value="kNN" [(ngModel)]="machineLearningModel" pTooltip="K-nearest neighbors is classification model that calculates the similarity between data and chooses the class that is most common amongst the closest K (a given number) samples.
+ The model depends on the value of K (number of neighbors) and the weight parameter (‘uniform’ means all neighbors have the same influence on the result and ‘distance’ means that from the selected neighbors the closest are more valuable )."></p-radioButton>
+        <br />
+        <p-radioButton (onClick)="reevaluateExpression()" label="Naive Bayes" name="mlModel" value="Naive Bayes" [(ngModel)]="machineLearningModel" pTooltip="Naive Bayes is a probabilistic classifier based on applying Bayes theorem with naive assumptions: that the features are independent of each other. Despite their simplicity, they can achieve surprisingly high accuracy when paired with some tricks. You can play around with the alpha value here (alpha helps with smoothing the categorical data)."></p-radioButton>
+        <br />
+        <p-radioButton (onClick)="reevaluateExpression()" label="Neural Network" name="mlModel" value="NN" [(ngModel)]="machineLearningModel" pTooltip="Neural networks are formed by artificial nodes which mimic the brain. Each connection, like the synapses in a biological brain, can transmit a signal to other neurons. An artificial neuron works with an activation function that decreases small values, so the neuron will be stimulated just by the big ones.
+Here you can customize the Laplacian filter (processing the image to obtain the edges), the hidden layer size (how many layers and how many node in each layer your network should have), the activation function (decides to which extent your neuron should influence the model’s prediction), solver function (used to optimize your model’s parameters), alpha value (used to combat overfitting to your training set), batch size (how many samples will be propagated through the network at every iteration), learning rate (determines the step size at each iteration while moving toward a minimum of a loss function)"></p-radioButton>
+        <br />
+      </div>
+
+      <div *ngIf="machineLearningModel == 'SVC'" class="image-preprocessing">
+        <br />
+        <div style="width: 200px">
+          <label>c = {{getCDisplayValue()}}</label>
+          <p-slider (onChange)="reevaluateExpression()" [min]="-3" [max]="5" [(ngModel)]="svcDto.c"></p-slider>
+        </div>
+
+        <br />
+        <label>Choose a Kernel Type:</label>
+        <p-radioButton (onClick)="reevaluateExpression()" label="linear" name="kernelType" value="linear" [(ngModel)]="svcDto.kernel"></p-radioButton>
+        <br />
+        <p-radioButton (onClick)="reevaluateExpression()" label="rbf" name="kernelType" value="rbf" [(ngModel)]="svcDto.kernel"></p-radioButton>
+        <br />
+        <br />
+
+        <div *ngIf="svcDto.kernel == 'rbf'">
+          <label>gamma = {{svcDto.gamma}} </label>
+          <p-radioButton (onClick)="reevaluateExpression()" label="scale" name="rbfGamma" value="scale" [(ngModel)]="svcDto.gamma"></p-radioButton>
+          <br />
+          <p-radioButton (onClick)="reevaluateExpression()" label="auto" name="rbfGamma" value="auto" [(ngModel)]="svcDto.gamma"></p-radioButton>
+          <br />
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -12,11 +80,13 @@
           (drag)="onDrag($event)" 
           (dragend)="onDragEnd($event)"
           [style.left.%]="adjust_button_x"></button>
-  <div class="code" style="overflow: scroll" [style.width.%]="code_width">
+  <div class="code" [style.width.%]="code_width">
     <h2>Generated code</h2>
-    <div>
-      <ngx-prism [language]="language">
-        {{content}}
+    <div style="overflow: scroll; max-height: 80vh">
+      <ngx-prism
+           [language]="language"
+           [cd]="{'code':true}"
+           [code]="content">
       </ngx-prism>
 
       <div class="code-line-numbers">

@@ -17,3 +17,11 @@
   background-color: #1570a8;
   border-bottom: 2px solid #110651;
 }
+
+.the-rest {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 90vh;
+  width: 100vw;
+}

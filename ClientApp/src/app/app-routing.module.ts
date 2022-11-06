@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'class-picker', component: ClassPickerComponent },
   { path: 'import-training-data', component: ImportTrainingDataPageComponent },
   { path: 'code-builder', component: CodeBuilderComponent },
-  { path: '**', component: ClassPickerComponent }
+  { path: 'home', component: ClassPickerComponent },
+  { path: '**', component: ClassPickerComponent },
 ];
 
 @NgModule({

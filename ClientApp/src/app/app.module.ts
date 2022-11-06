@@ -4,6 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { WebcamModule } from 'ngx-webcam';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { TooltipModule } from 'primeng/tooltip';
+import { DropdownModule } from 'primeng/dropdown';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { SliderModule } from 'primeng/slider';
 
 import { AppComponent } from './app.component';
 import { AppBackgroundComponent } from './app-background/app-background.component';
@@ -36,7 +41,12 @@ import { CodeBuilderComponent } from './code-builder/code-builder.component';
     ]),
     AppRoutingModule,
     PrismModule,
-    WebcamModule
+    WebcamModule,
+    InputSwitchModule,
+    TooltipModule,
+    DropdownModule,
+    RadioButtonModule,
+    SliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

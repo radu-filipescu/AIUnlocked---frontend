@@ -24,9 +24,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\code-builder\Dto\knnDto.ts" />
+    <None Remove="ClientApp\src\app\code-builder\Dto\PreprocessingDto.ts" />
+    <None Remove="ClientApp\src\app\code-builder\Dto\SVCDto.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ClientApp\src\app\import-training-data\" />
     <Folder Include="ClientApp\src\app\global-services\" />
     <Folder Include="ClientApp\src\assets\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\code-builder\Dto\knnDto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\code-builder\Dto\PreprocessingDto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\code-builder\Dto\SVCDto.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

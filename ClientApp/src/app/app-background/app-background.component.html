@@ -1,9 +1,11 @@
 <div class="wrapper">
   <div class="top-bar">
-    <div class="main-logo">
+    <div class="main-logo" (click)="goHome()">
       <img style="height: 4vw; padding-left: 3px" src="../../assets/images/logo.png" />
     </div>
   </div>
 
-  <router-outlet></router-outlet>
+  <div class="the-rest">
+    <router-outlet></router-outlet>
+  </div>
 </div>
