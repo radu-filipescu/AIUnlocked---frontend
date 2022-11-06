@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GlobalServiceService } from '../../global-services/global-service.service';
 
@@ -16,13 +17,21 @@ export class UseWebcamPageComponent implements OnInit {
 
   capturesPerSecond: number = 10; // experiment with that
   timer = null;
-  imageCaptures: string[] = [];
+  imageCapturesClass1: string[] = [];
+  imageCapturesClass2: string[] = [];
+
+  whichClass: number = 1;
 
   previewMode: boolean = false;
 
-  constructor(public globalService: GlobalServiceService) { }
+  userClass1: string = "";
+  userClass2: string = "";
+
+  constructor(public globalService: GlobalServiceService, public router: Router) { }
 
   ngOnInit() {
+    this.userClass1 = GlobalServiceService.userClass1;
+    this.userClass2 = GlobalServiceService.userClass2;
   }
 
   close() {
@@ -32,7 +41,10 @@ export class UseWebcamPageComponent implements OnInit {
   startCapturing() {
     this.capturingNow = true;
 
-    this.imageCaptures = [];
+    if (this.whichClass == 1)
+      this.imageCapturesClass1 = [];
+    else
+      this.imageCapturesClass2 = [];
 
     this.timer = setInterval(() => {
       this.triggerCapture.emit();
@@ -45,8 +57,15 @@ export class UseWebcamPageComponent implements OnInit {
       clearInterval(this.timer);
   }
 
+  nextClass() {
+    this.whichClass = 2;
+  }
+
   handleImageCapture(event: any) {
-    this.imageCaptures.push(event._imageAsDataUrl);
+    if (this.whichClass == 1)
+      this.imageCapturesClass1.push(event._imageAsDataUrl);
+    else
+      this.imageCapturesClass2.push(event._imageAsDataUrl);
   }
 
   openPreviewCaptures() {
@@ -58,10 +77,10 @@ export class UseWebcamPageComponent implements OnInit {
   }
 
   useWebcamCapture() {
-    this.globalService.saveWebcamImages(this.imageCaptures)
+    this.globalService.saveWebcamImages(this.imageCapturesClass1, this.imageCapturesClass2)
       .subscribe(() => {
-        console.log('images saved!');
-
       });
+
+    this.router.navigate(['code-builder']);
   }
 }

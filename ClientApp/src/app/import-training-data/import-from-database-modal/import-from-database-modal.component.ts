@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { GlobalServiceService } from '../../global-services/global-service.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-import-from-database-modal',
@@ -19,8 +20,10 @@ export class ImportFromDatabaseModalComponent implements OnInit {
   userClass1Images: string[] = [];
   userClass2Images: string[] = [];
 
-  constructor(public globalService: GlobalServiceService,
-          public _sanitizer: DomSanitizer  ) { }
+  constructor(
+    public globalService: GlobalServiceService,
+    public _sanitizer: DomSanitizer,
+    public router: Router) { }
 
   ngOnInit() {
     this.userClass1 = GlobalServiceService.userClass1;
@@ -62,6 +65,6 @@ export class ImportFromDatabaseModalComponent implements OnInit {
   }
 
   useDatabase() {
-    //this.globalService.getImagesOfClass
+    this.router.navigate(['code-builder']);
   }
 }

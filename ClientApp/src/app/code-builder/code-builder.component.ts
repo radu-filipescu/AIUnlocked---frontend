@@ -10,18 +10,64 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers';
 export class CodeBuilderComponent implements OnInit {
 
   language = 'javascript';
-  content = `for i in list:
-                print(i)`;
+  content =
+    `for i in list:
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      print(i)
+      for j in list:
+        if awdawdawd
+        elif:
+            adawdawdawd
+            print(i)`;
+
 
   parameters_width: number = 50;
   code_width: number = 50;
-  adjust_button_x: number = 48.5;
+  adjust_button_x: number = 49.3;
 
   mouseX = 0;
 
   constructor() { }
 
   ngOnInit() {
+    /*let lineNumbers = document.querySelectorAll('.code-line-numbers');
+
+    console.log(lineNumbers);
+
+    lineNumbers.forEach(div => div.addEventListener('scroll', e => {
+      lineNumbers.forEach(d => {
+        d.scrollTop = div.scrollTop;
+        d.scrollLeft = div.scrollLeft;
+      });
+
+    }));*/
   }
 
   onDragStart(event) {

@@ -1,17 +1,31 @@
 <div class="wrapper">
   <div class="parameters" [style.width.%]="parameters_width">
     <h2>Parameters</h2>
+
+    <div class="params-zone">
+      <div>Mzg</div>
+    </div>
   </div>
+
   <button class="adjust" draggable="true"
           (dragstart)="onDragStart($event)"
           (drag)="onDrag($event)" 
           (dragend)="onDragEnd($event)"
-          [style.left.%]="adjust_button_x">adjust</button>
-  <div class="code" [style.width.%]="code_width">
+          [style.left.%]="adjust_button_x"></button>
+  <div class="code" style="overflow: scroll" [style.width.%]="code_width">
     <h2>Generated code</h2>
-    <ngx-prism [language]="language">
-      {{content}}
-    </ngx-prism>
+    <div>
+      <ngx-prism [language]="language">
+        {{content}}
+      </ngx-prism>
+
+      <div class="code-line-numbers">
+        <div class="line-number"
+             *ngFor="let line of content.split('\n'); let i=index">
+          {{i}}
+        </div>
+      </div>
+    </div>
   </div>
 
 

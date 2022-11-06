@@ -20,30 +20,10 @@ code {
 
 .code > ngx-prism > pre {
   height: inherit;
+  overflow: hidden !important;
+  
 }
 
-/*Prism.js line numbers plugin*/
-.line-numbers .line-numbers-rows {
-  position: absolute;
-  pointer-events: none;
-  top: 15px;
-  font-size: 100%;
-  left: 0;
-  width: 3em;
-  letter-spacing: -1px;
-  border-right: 1px solid rgb(179, 179, 179);
-  user-select: none;
+code[class*="language-"], pre[class*="language-"] {
+  padding-left: 14px !important;
 }
-
-.line-numbers-rows > span {
-  display: block;
-  counter-increment: linenumber;
-}
-
-  .line-numbers-rows > span:before {
-    content: counter(linenumber);
-    color: rgb(219, 219, 219);
-    display: block;
-    padding-right: 0.8em;
-    text-align: right;
-  }

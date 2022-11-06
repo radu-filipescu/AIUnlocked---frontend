@@ -18,6 +18,13 @@
   font-size: 24px;
 }
 
+.which-class {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+
 .modal-button {
   position: absolute;
   height: 6vh;
@@ -125,10 +132,26 @@
 }
 
 .preview-area {
-  overflow-y: scroll;
   height: 510px;
   padding-left: 10px;
+  padding-right: 10px;
+}
+
+.preview-area-first {
+  height: 250px;
   border: 1px solid #111111;
+  background-color: #EEEEEE;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.preview-area-second {
+  height: 250px;
+  border: 1px solid #111111;
+  background-color: #EEEEEE;
+  margin-top: 10px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .back-from-preview {

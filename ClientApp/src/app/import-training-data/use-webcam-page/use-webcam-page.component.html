@@ -3,6 +3,10 @@
     Use your web camera
   </div>
 
+  <div class="which-class" *ngIf="!previewMode">
+    Now scan <b>{{ whichClass == 1 ? userClass1 : userClass2 }}</b>.
+  </div>
+
   <div *ngIf="!previewMode">
     <div class="webcam-live">
       <webcam style="margin-left: 300px"
@@ -15,7 +19,9 @@
          *ngIf="!capturingNow">
       start capturing
     </div>
-    <div class="capture-counter" *ngIf="imageCaptures.length > 0">{{imageCaptures.length}}</div>
+    <div class="capture-counter" *ngIf="imageCapturesClass1.length > 0 || imageCapturesClass2.length > 0">
+      {{whichClass == 1 ? imageCapturesClass1.length : imageCapturesClass2.length}}
+    </div>
 
     <div class="stop-capture-button"
          (click)="stopCapturing()"
@@ -23,12 +29,26 @@
       stop capturing
     </div>
 
-    <div *ngIf="imageCaptures.length > 0 && !capturingNow" (click)="openPreviewCaptures()" class="preview-captures">preview</div>
+    <div class="preview-captures"
+         (click)="nextClass()"
+         *ngIf="!capturingNow && imageCapturesClass1.length > 0">
+      next
+    </div>
+
+    <div *ngIf="imageCapturesClass1.length > 0 && imageCapturesClass2.length > 0 && !capturingNow" (click)="openPreviewCaptures()" class="preview-captures">preview</div>
   </div>
 
   <div *ngIf="previewMode" class="preview-area">
-    <div *ngFor="let image of imageCaptures">
-      <img style="display:inline; float: left; height: 80px; margin-left: 5px; margin-top: 2px" [src]="image" />
+    <div class="preview-area-first">
+      <div *ngFor="let image of imageCapturesClass1">
+        <img style="display:inline; float: left; height: 80px; margin-left: 5px; margin-top: 2px" [src]="image" />
+      </div>
+    </div>
+
+    <div class="preview-area-second">
+      <div *ngFor="let image of imageCapturesClass2">
+        <img style="display:inline; float: left; height: 80px; margin-left: 5px; margin-top: 2px" [src]="image" />
+      </div>
     </div>
   </div>
 
