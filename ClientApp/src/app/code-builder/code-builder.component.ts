@@ -7,6 +7,7 @@ import { SelectItem } from 'primeng/api';
 import { SVCDto } from './Dto/SVCDto';
 import { GlobalServiceService } from '../global-services/global-service.service';
 import { knnDto } from './Dto/knnDto';
+import { NaiveBayesDto } from './Dto/naiveBayesDto';
 
 @Component({
   selector: 'app-code-builder',
@@ -21,6 +22,7 @@ export class CodeBuilderComponent implements OnInit {
 
   svcDto = new SVCDto();
   knnDto = new knnDto();
+  naiveBayesDto = new NaiveBayesDto();
 
   userClass1: string = "";
   userClass2: string = "";
@@ -129,6 +131,20 @@ export class CodeBuilderComponent implements OnInit {
     from skimage.io import imread
     from sklearn.model_selection import train_test_split`;
 
+  knnImportsCode =
+    `    #scikit modules (sklearn and skimage) provide simple and efficient tools for predictive data analysis
+    from sklearn.neighbors import KNeighborsClassifier
+    from skimage.transform import resize
+    from skimage.io import imread
+    from sklearn.model_selection import train_test_split`;
+
+  naiveBayesImportsCode =
+    `   #scikit modules (sklearn and skimage) provide simple and efficient tools for predictive data analysis
+    from sklearn.naive_bayes import ComplementNB
+    from skimage.transform import resize
+    from skimage.io import imread
+    from sklearn.model_selection import train_test_split`;
+
   language = 'javascript';
 
   content: string = "";
@@ -155,6 +171,88 @@ export class CodeBuilderComponent implements OnInit {
   }
 
   reevaluateExpression() {
+    let naiveBayesCode =
+      `   images_array = []
+      labels_array = []
+
+      #get all images from the selected classes and associate them with their labels
+
+      for image_name in os.listdir(first_class_path):
+        image = imread( first_class_path + "/" + image_name )
+        resized_image = resize(image,(32, 32, 3))
+
+      #convert image format to a one-dimensional list
+      images_array.append(resized_image.flatten())
+      labels_array.append(${this.userClass1})
+
+      for image_name in os.listdir(second_class_path):
+        image = imread(second_class_path + "/" + image_name)
+        resized_image = resize(image, 32, 32, 3))
+
+      images_array.append(resized_image.flatten())
+      labels_array.append(${this.userClass2})
+
+      images_array = np.array(images_array)
+      labels_array = np.array(labels_array)
+
+      #split the data in training and test samples with a given percentage (20%)
+      train_images, test_images, train_labels, test_labels = train_test_split(
+        images_array,
+        labels_array,
+        test_size=0.2,
+        shuffle=True)
+
+      #initialize the model with the chosen parameters
+      naive_bayes_model = ComplementNB( ${this.naiveBayesDto.alpha} )
+
+      #train the model
+      naive_bayes_model.fit(images_array, labels_array)
+
+      #classify the test samples and compare the prediction with the correct output
+      accuracy = naive_bayes_model.score(test_images, test_labels)`;
+
+    let knnCode =
+      `   images_array = []
+    labels_array = []
+
+    #get all images from the selected classes and associate them with their labels
+
+    for image_name in os.listdir(first_class_path):
+      image = imread( first_class_path + "/" + image_name )
+      resized_image = resize(image,(32, 32, 3))
+
+    #convert image format to a one-dimensional list
+    images_array.append(resized_image.flatten())
+    labels_array.append(${this.userClass1})
+
+    for image_name in os.listdir(second_class_path):
+      image = imread(second_class_path + "/" + image_name)
+      resized_image = resize(image,(32, 32, 3))
+
+    images_array.append(resized_image.flatten())
+    labels_array.append(${this.userClass2})
+
+    images_array = np.array(images_array)
+    labels_array = np.array(labels_array)
+
+    #split the data in training and test samples with a given percentage (20%)
+    train_images, test_images, train_labels, test_labels = train_test_split(
+    images_array,
+    labels_array,
+    test_size=0.2,
+    shuffle=True,
+  )
+
+    #initialize the model with the chosen parameters
+    nearest_neighbors_model = KNeighborsClassifier( n_neighbors = ${this.knnDto.neighbors}, weights = ${this.knnDto.weights})
+
+    #train the model
+    nearest_neighbors_model.fit(images_array, labels_array)
+
+    #classify the test samples and compare the prediction with the correct output
+    accuracy = nearest_neighbors_model.score(test_images, test_labels)
+`
+
     let svcCode =
       `    images_array = []
     labels_array = []
@@ -207,19 +305,25 @@ export class CodeBuilderComponent implements OnInit {
     from numpy import asarray
     from PIL import Image\n\n`
       + (this.machineLearningModel == 'SVC' ? this.svcImportsCode + '\n\n' : "")
+      + (this.machineLearningModel == 'kNN' ? this.knnImportsCode + '\n\n' : "")
+      + (this.machineLearningModel == 'Naive Bayes' ? this.naiveBayesImportsCode + '\n\n' : "")
       + (this.preprocessingDto.flipValue ? this.flipImageCode + '\n\n' : "")
       + (this.preprocessingDto.brightnessValue ? this.brightnessCode + '\n\n' : "")
       + (this.preprocessingDto.contrastValue ? this.contrastCode + '\n\n' : "")
       + (this.preprocessingDto.saturationValue ? this.saturationCode + '\n\n' : "")
-      + (this.preprocessingDto.grayscaleValue ? this.greyscaleCode : "\n\n")
+      + (this.preprocessingDto.grayscaleValue ? this.greyscaleCode + '\n\n' : "")
       + `    # Copy the images back into the data set folder
     os.makedirs('data/train_data2/')
     counter = 1
     for image in images:
         img = Image.fromarray(image)
         img.save('data/train_data2/' + str(counter) + ".jpg")
-        counter += 1`
-      + (this.machineLearningModel == 'SVC' ? svcCode + '\n\n' : "");
+        counter += 1
+
+`
+      + (this.machineLearningModel == 'SVC' ? svcCode + '\n\n' : "")
+      + (this.machineLearningModel == 'kNN' ? knnCode + '\n\n' : "")
+      + (this.machineLearningModel == 'Naive Bayes' ? naiveBayesCode + '\n\n' : "");
   }
 
   onDragStart(event) {

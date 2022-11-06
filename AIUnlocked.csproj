@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\code-builder\Dto\knnDto.ts" />
+    <None Remove="ClientApp\src\app\code-builder\Dto\naiveBayesDto.ts" />
     <None Remove="ClientApp\src\app\code-builder\Dto\PreprocessingDto.ts" />
     <None Remove="ClientApp\src\app\code-builder\Dto\SVCDto.ts" />
   </ItemGroup>
@@ -37,6 +38,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\code-builder\Dto\knnDto.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\code-builder\Dto\naiveBayesDto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\code-builder\Dto\PreprocessingDto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\code-builder\Dto\SVCDto.ts" />
   </ItemGroup>
