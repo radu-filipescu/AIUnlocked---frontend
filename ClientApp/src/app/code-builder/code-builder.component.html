@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div class="parameters" [style.width.%]="parameters_width">
+    <h2>Parameters</h2>
+  </div>
+  <button class="adjust" draggable="true"
+          (dragstart)="onDragStart($event)"
+          (drag)="onDrag($event)" 
+          (dragend)="onDragEnd($event)"
+          [style.left.%]="adjust_button_x">adjust</button>
+  <div class="code" [style.width.%]="code_width">
+    <h2>Generated code</h2>
+    <ngx-prism [language]="language">
+      {{content}}
+    </ngx-prism>
+  </div>
+
+
+</div>

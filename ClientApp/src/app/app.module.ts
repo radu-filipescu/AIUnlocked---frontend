@@ -15,6 +15,8 @@ import { UseWebcamPageComponent } from './import-training-data/use-webcam-page/u
 
 import { PrismModule } from '@ngx-prism/core';
 
+import { CodeBuilderComponent } from './code-builder/code-builder.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { PrismModule } from '@ngx-prism/core';
     ImportTrainingDataPageComponent,
     ImportFromDatabaseModalComponent,
     UseWebcamPageComponent,
-    ClassPickerComponent
+    ClassPickerComponent,
+    CodeBuilderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
