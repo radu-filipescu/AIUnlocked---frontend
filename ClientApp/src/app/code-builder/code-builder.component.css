@@ -14,11 +14,15 @@
   position: relative;
   min-height: 95%;
   float: left;
-  overflow: hidden;
+  /*overflow: hidden;*/
+  overflow: scroll;
+  max-height: 80vh;
+  top: 4.5vh;
 }
 
 .code > ngx-prism {
   overflow: hidden !important;
+  min-height: fit-content;
 }
 
 .adjust {
@@ -53,7 +57,7 @@ label {
 
 .code-line-numbers {
   position: absolute;
-  top: 8vh;
+  top: 2.3vh;
   left: 0;
   width: 28px;
   border-left: 3px solid #808080;

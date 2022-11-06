@@ -36,4 +36,5 @@ code[class*="language-"], pre[class*="language-"] {
 
 code[class*="language-"], pre[class*="language-"] {
   padding-left: 14px !important;
+  min-width: fit-content !important;
 }

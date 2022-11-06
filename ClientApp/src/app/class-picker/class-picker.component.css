@@ -25,27 +25,35 @@ textarea:focus, input:focus {
   outline: none;
 }
 
-input:focus-visible {
+  input:focus-visible {
     border: none;
     border-bottom: 1px solid #1570a8;
-}
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  input:hover {
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
 
 .separator{
     display: inline;
 }
 
-.next-button{
-    background-color: #ffd74a;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 3vh;
-    right: 3vh;
-    width: 110px;
+.next-button {
+  background-color: #ffd74a;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 3vh;
+  right: 3vh;
+  width: 70px;
+  height: 70px;
 }
 
 span {
   font-weight: bold;
   font-size: 70px;
-  position:relative;
-  top: -8.5px;
+  position: relative;
+  top: -28.5px;
+  left: -3px;
 }
