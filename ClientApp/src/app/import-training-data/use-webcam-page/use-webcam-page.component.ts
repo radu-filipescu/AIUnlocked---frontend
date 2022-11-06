@@ -82,5 +82,7 @@ export class UseWebcamPageComponent implements OnInit {
       });
 
     this.router.navigate(['code-builder']);
+
+    GlobalServiceService.importWay = 2;
   }
 }

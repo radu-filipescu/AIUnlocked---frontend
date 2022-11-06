@@ -1,6 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { knnDto } from '../code-builder/Dto/knnDto';
+import { NaiveBayesDto } from '../code-builder/Dto/naiveBayesDto';
+import { SVCDto } from '../code-builder/Dto/SVCDto';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +11,9 @@ import { Observable } from 'rxjs';
 export class GlobalServiceService {
   static userClass1: string = "tomato";
   static userClass2: string = "papaya";
+
+  // 1 - own database, 2 - webcam, 3 - file upload
+  static importWay: number;
 
   backendUrl: string = "https://localhost:44307/api/";
 
@@ -37,5 +43,35 @@ export class GlobalServiceService {
     params = params.append("objectClass", objectClass);
 
     return this.httpClient.get(this.backendUrl + 'Image/getNumberOfImagesOfClass', { headers: headers, params: params });
+  }
+
+  setSVCConfig(config: SVCDto) {
+    return this.httpClient.post(this.backendUrl + 'PythonCode/postSVCConfig', config);
+  }
+
+  setKNNConfig(config: knnDto) {
+    return this.httpClient.post(this.backendUrl + 'PythonCode/postKNNConfig', config);
+  }
+
+  setNBConfig(config: NaiveBayesDto) {
+    return this.httpClient.post(this.backendUrl + 'PythonCode/postNBConfig', config);
+  }
+
+  postCode(MLModel: string, userClass1: string, userClass2: string) {
+    let dto = new Object();
+
+    dto = {
+      "pythonCode": MLModel,
+      "class1": userClass1,
+      "class2": userClass2,
+      "sourceFlag": GlobalServiceService.importWay
+    };
+
+    console.log(dto);
+
+    if ((dto as any).pythonCode == "Naive Bayes")
+      (dto as any).pythonCode = 'NB';
+
+    return this.httpClient.post(this.backendUrl + 'PythonCode/postPythonCode', dto);
   }
 }

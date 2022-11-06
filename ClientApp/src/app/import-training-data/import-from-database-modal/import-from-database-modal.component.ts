@@ -66,5 +66,6 @@ export class ImportFromDatabaseModalComponent implements OnInit {
 
   useDatabase() {
     this.router.navigate(['code-builder']);
+    GlobalServiceService.importWay = 1;
   }
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClassPickerComponent } from './class-picker/class-picker.component';
 import { CodeBuilderComponent } from './code-builder/code-builder.component';
 import { ImportTrainingDataPageComponent } from './import-training-data/import-training-data-page/import-training-data-page.component';
+import { ResultsPageComponent } from './results-page/results-page.component';
 
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'import-training-data', component: ImportTrainingDataPageComponent },
   { path: 'code-builder', component: CodeBuilderComponent },
   { path: 'home', component: ClassPickerComponent },
+  { path: 'results', component: ResultsPageComponent },
   { path: '**', component: ClassPickerComponent },
 ];
 

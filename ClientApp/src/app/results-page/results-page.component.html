@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <div class="result-header">Results</div>
+
+  <div class="result-text">
+    The model you trained had an accuracy of <b>{{accuracy}}</b> on test samples choosen from the
+    training data. You can test it on more test samples if you want.
+  </div>
+
+  <div class="import-option" (click)="openWebcamModal()">
+    <img style="padding-left: 5vw" src="../../../assets/images/webcam-icon.png" />
+    <div class="option-name">Take a picture using your web camera</div>
+  </div>
+
+  <div *ngIf="showWebcam" class="webcam-modal">
+
+  </div>
+
+  </div>
+</div>

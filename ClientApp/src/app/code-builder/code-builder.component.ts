@@ -8,6 +8,7 @@ import { SVCDto } from './Dto/SVCDto';
 import { GlobalServiceService } from '../global-services/global-service.service';
 import { knnDto } from './Dto/knnDto';
 import { NaiveBayesDto } from './Dto/naiveBayesDto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-code-builder',
@@ -155,7 +156,7 @@ export class CodeBuilderComponent implements OnInit {
 
   mouseX = 0;
 
-  constructor(public globalService: GlobalServiceService) {
+  constructor(public globalService: GlobalServiceService, public router: Router) {
 
   }
 
@@ -360,6 +361,39 @@ export class CodeBuilderComponent implements OnInit {
 
   onDragEnd(event) {
     /*event.target.style.opacity = 1;*/
+  }
+
+  generateModel() {
+    if (this.machineLearningModel == 'SVC') {
+      this.globalService.setSVCConfig(this.svcDto)
+        .subscribe(() => {
+          console.log('saved config');
+        });
+    }
+
+    if (this.machineLearningModel == 'kNN') {
+      this.globalService.setKNNConfig(this.knnDto)
+        .subscribe(() => {
+          console.log('saved config');
+        });
+    }
+
+    if (this.machineLearningModel == 'Naive Bayes') {
+      this.globalService.setNBConfig(this.naiveBayesDto)
+        .subscribe(() => {
+          console.log('saved config');
+        });
+    }
+  }
+
+
+  generateModel2() {
+    this.globalService.postCode(this.machineLearningModel, this.userClass1, this.userClass2)
+      .subscribe(() => {
+    });
+
+    this.router.navigate(['results']);
+    console.log('results');
   }
 
 }
